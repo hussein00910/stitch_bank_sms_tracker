@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#bdc9ca",
+                    "on-secondary-fixed-variant": "#3c494a",
+                    "tertiary-container": "#2575a6",
+                    "on-surface": "#191c1d",
+                    "tertiary-fixed-dim": "#8ecdff",
+                    "tertiary": "#005c88",
+                    "primary-container": "#007b83",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#cbe6ff",
+                    "on-primary-fixed-variant": "#004f54",
+                    "on-secondary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "surface-variant": "#e1e3e4",
+                    "on-tertiary-container": "#ebf4ff",
+                    "on-secondary-container": "#596768",
+                    "secondary-container": "#d6e5e6",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary-fixed": "#002022",
+                    "secondary-fixed": "#d6e5e6",
+                    "inverse-on-surface": "#f0f1f2",
+                    "primary": "#006067",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#7ad5dd",
+                    "primary-fixed": "#96f1fa",
+                    "on-tertiary-fixed-variant": "#004b71",
+                    "inverse-surface": "#2e3132",
+                    "secondary-fixed-dim": "#bac9ca",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-secondary-fixed": "#101e1f",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary": "#ffffff",
+                    "secondary": "#536162",
+                    "background": "#f8f9fa",
+                    "surface-tint": "#006970",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#edeeef",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary-fixed": "#001e30",
+                    "on-error-container": "#93000a",
+                    "outline": "#6e797a",
+                    "on-surface-variant": "#3e494a",
+                    "on-primary-container": "#d0fbff",
+                    "inverse-primary": "#7ad5dd",
+                    "surface-dim": "#d9dadb",
+                    "on-background": "#191c1d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-[#f8f9fa] dark:bg-[#191c1d]">
+<div class="flex items-center justify-between px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="transition-opacity duration-200 active:opacity-70 text-[#006067] dark:text-[#96f1fa]">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<h1 class="font-manrope font-bold text-xl text-[#006067] dark:text-[#96f1fa]">تنبيهات البنك</h1>
+</div>
+<button class="transition-opacity duration-200 active:opacity-70 text-[#006067] dark:text-[#96f1fa]">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 pt-4 space-y-6">
+<!-- Summary Dashboard (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="md:col-span-2 bg-surface-container-lowest p-6 rounded-full flex flex-col justify-between h-48 border border-outline-variant/10 shadow-sm relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-on-surface-variant font-label text-xs uppercase tracking-widest mb-1">إجمالي الحركات المكتشفة</p>
+<h2 class="text-4xl font-extrabold text-primary font-headline">12,450.00 ر.س</h2>
+</div>
+<div class="flex gap-2 relative z-10">
+<span class="bg-primary-container/10 text-primary px-3 py-1 rounded-full text-xs font-medium">تمت الأرشفة: 24</span>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-medium">معلق: 2</span>
+</div>
+<!-- Abstract Texture -->
+<div class="absolute -right-8 -bottom-8 w-48 h-48 bg-primary-fixed/20 rounded-full blur-3xl"></div>
+</div>
+<div class="bg-primary text-on-primary p-6 rounded-full flex flex-col justify-center items-center text-center shadow-lg">
+<span class="material-symbols-outlined text-4xl mb-2" data-weight="fill" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<p class="text-sm font-medium opacity-90">المزامنة التلقائية</p>
+<p class="text-xs opacity-75 mt-1">نشط الآن</p>
+</div>
+</section>
+<!-- Message List -->
+<div class="space-y-4">
+<div class="flex justify-between items-end px-2">
+<h3 class="text-lg font-bold text-on-surface">آخر الرسائل القصيرة</h3>
+<span class="text-primary text-sm font-semibold cursor-pointer hover:underline">تحديث</span>
+</div>
+<div class="space-y-3">
+<!-- Alert Item 1: SNB -->
+<div class="group bg-surface-container-lowest p-5 rounded-full flex gap-4 transition-all hover:bg-surface-container duration-300 border border-transparent hover:border-outline-variant/20">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+</div>
+<div class="flex-grow space-y-1">
+<div class="flex justify-between items-start">
+<span class="font-bold text-on-surface">البنك الأهلي السعودي (SNB)</span>
+<span class="text-[10px] text-on-surface-variant font-label">اليوم، 10:45 ص</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed font-body italic">"شراء بمبلغ 240.50 ريال في بنده هايبر ماركت عبر بطاقة مدى ..."</p>
+<div class="flex items-center gap-3 pt-2">
+<span class="bg-[#d6e5e6] text-[#006067] text-[10px] px-3 py-0.5 rounded-full font-bold uppercase">تسوق</span>
+<div class="flex items-center gap-1 text-[10px] text-primary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                تمت الإضافة للدفتر
+                            </div>
+</div>
+</div>
+</div>
+<!-- Alert Item 2: Al Rajhi -->
+<div class="group bg-surface-container-lowest p-5 rounded-full flex gap-4 transition-all hover:bg-surface-container duration-300">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<div class="flex-grow space-y-1">
+<div class="flex justify-between items-start">
+<span class="font-bold text-on-surface">مصرف الراجحي</span>
+<span class="text-[10px] text-on-surface-variant font-label">أمس، 08:20 م</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed font-body italic">"سحب نقدي من صراف آلي بمبلغ 500.00 ريال ..."</p>
+<div class="flex items-center gap-3 pt-2">
+<span class="bg-[#d6e5e6] text-[#006067] text-[10px] px-3 py-0.5 rounded-full font-bold uppercase">سحب نقدي</span>
+<div class="flex items-center gap-1 text-[10px] text-primary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                تمت الإضافة للدفتر
+                            </div>
+</div>
+</div>
+</div>
+<!-- Alert Item 3: ANB -->
+<div class="group bg-surface-container-lowest p-5 rounded-full flex gap-4 transition-all hover:bg-surface-container duration-300">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary">fastfood</span>
+</div>
+<div class="flex-grow space-y-1">
+<div class="flex justify-between items-start">
+<span class="font-bold text-on-surface">البنك العربي الوطني (ANB)</span>
+<span class="text-[10px] text-on-surface-variant font-label">12 مايو، 01:15 م</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed font-body italic">"عملية شراء في مطعم شاورما جليلة بقيمة 45.00 ريال ..."</p>
+<div class="flex items-center gap-3 pt-2">
+<span class="bg-[#d6e5e6] text-[#006067] text-[10px] px-3 py-0.5 rounded-full font-bold uppercase">طعام</span>
+<div class="flex items-center gap-1 text-[10px] text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">pending</span>
+                                قيد المراجعة
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Call to Action Section -->
+<div class="relative h-40 w-full rounded-full overflow-hidden flex items-center px-10">
+<img alt="" class="absolute inset-0 w-full h-full object-cover opacity-20" data-alt="abstract financial data visualization with soft blue and teal lights flowing across a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoiKjED01KG7zcCgAw0_q0CAslLTefFVfV4mHvSDAc7pYM6WZpTArR_Iil93vbswwp6vKDKXuc15J1nWI3Yl49pqJHM0hdmtdrfQUhXP_lCylP3KyNyQZ-uk-u7chBJcsAwlYOz3iky8btbMpL6-zNluzphbAe37SuLMBFnY8oGOJ1c3qiFwEDHr3BXwljX0rM61cd31zESHIf6Zke4ry4aJAtoV3bp3CSFPkqWR_NFeljRef8PXXQLKXKpmRVgNc3KfuKWQrTdto"/>
+<div class="relative z-10">
+<h4 class="text-primary font-bold text-lg">تحليل ذكي للمصروفات</h4>
+<p class="text-on-surface-variant text-sm max-w-xs">دع الذكاء الاصطناعي يصنف مشترياتك تلقائياً لتوفر المزيد من الوقت.</p>
+</div>
+<button class="mr-auto relative z-10 bg-primary text-on-primary px-6 py-2 rounded-full font-bold transition-transform active:scale-95 shadow-lg">
+                فعل الآن
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-[#ffffff]/80 dark:bg-[#191c1d]/80 backdrop-blur-md border-t-[0.5px] border-[#bdc9ca]/15 shadow-[0_-10px_30px_rgba(25,28,29,0.03)]">
+<div class="flex justify-around items-center h-20 px-4 pb-safe">
+<!-- Ledger -->
+<button class="flex flex-col items-center justify-center text-[#596768] dark:text-[#bdc9ca] px-5 py-1 hover:bg-[#f3f4f5] dark:hover:bg-[#2c3031] scale-95 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-inter text-xs font-medium uppercase tracking-wider mt-1">Ledger</span>
+</button>
+<!-- Insights -->
+<button class="flex flex-col items-center justify-center text-[#596768] dark:text-[#bdc9ca] px-5 py-1 hover:bg-[#f3f4f5] dark:hover:bg-[#2c3031] scale-95 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-inter text-xs font-medium uppercase tracking-wider mt-1">Insights</span>
+</button>
+<!-- Alerts (Active) -->
+<button class="flex flex-col items-center justify-center bg-[#d6e5e6] dark:bg-[#004f56] text-[#002022] dark:text-[#96f1fa] rounded-full px-5 py-1 scale-95 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="font-inter text-xs font-bold uppercase tracking-wider mt-1">Alerts</span>
+</button>
+<!-- Vault -->
+<button class="flex flex-col items-center justify-center text-[#596768] dark:text-[#bdc9ca] px-5 py-1 hover:bg-[#f3f4f5] dark:hover:bg-[#2c3031] scale-95 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined">lock</span>
+<span class="font-inter text-xs font-medium uppercase tracking-wider mt-1">Vault</span>
+</button>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Lucid Ledger - التحليلات والتقارير</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d6e5e6",
+                    "secondary": "#536162",
+                    "on-tertiary-container": "#ebf4ff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#96f1fa",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-container": "#d6e5e6",
+                    "primary-container": "#007b83",
+                    "tertiary-fixed": "#cbe6ff",
+                    "primary-fixed-dim": "#7ad5dd",
+                    "on-secondary-container": "#596768",
+                    "inverse-primary": "#7ad5dd",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#006067",
+                    "on-tertiary-fixed": "#001e30",
+                    "tertiary-fixed-dim": "#8ecdff",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "on-error-container": "#93000a",
+                    "outline": "#6e797a",
+                    "on-primary-container": "#d0fbff",
+                    "on-primary-fixed-variant": "#004f54",
+                    "inverse-surface": "#2e3132",
+                    "on-surface": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#191c1d",
+                    "tertiary-container": "#2575a6",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#d9dadb",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary-fixed": "#002022",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#006970",
+                    "background": "#f8f9fa",
+                    "surface-container-low": "#f3f4f5",
+                    "on-secondary-fixed-variant": "#3c494a",
+                    "on-secondary-fixed": "#101e1f",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-container": "#edeeef",
+                    "surface-variant": "#e1e3e4",
+                    "secondary-fixed-dim": "#bac9ca",
+                    "outline-variant": "#bdc9ca",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary": "#005c88",
+                    "on-tertiary-fixed-variant": "#004b71",
+                    "on-surface-variant": "#3e494a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #191c1d;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .bar-chart-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            height: 200px;
+        }
+        .bar-item {
+            flex: 1;
+            background: linear-gradient(to top, #006067, #007b83);
+            border-radius: 4px 4px 0 0;
+            transition: height 0.3s ease;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-xl flex justify-between items-center px-6 h-16 w-full docked full-width top-0 sticky z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-teal-800 dark:text-teal-300">account_balance_wallet</span>
+<h1 class="font-manrope font-bold text-lg tracking-tight text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-800 to-teal-500">The Lucid Ledger</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors p-2 rounded-full active:scale-95 duration-150 ease-out">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">picture_as_pdf</span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 pt-8 space-y-8">
+<!-- Welcome & Date Header -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h2 class="font-headline font-extrabold text-3xl text-on-surface">التحليلات المالية</h2>
+<p class="text-on-surface-variant font-body mt-1">تقرير الفترة: 1 أكتوبر - 31 أكتوبر 2023</p>
+</div>
+<div class="flex gap-2">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-4 py-1 rounded-full text-xs font-semibold">شهري</span>
+<span class="bg-surface-container-high text-on-surface-variant px-4 py-1 rounded-full text-xs font-semibold">أسبوعي</span>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Expense Distribution Bar Chart (Large Card) -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-6 transition-all border-none">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline font-bold text-lg text-primary">توزيع المصروفات (الأيام)</h3>
+<span class="text-xs text-on-surface-variant uppercase tracking-widest font-label">إجمالي: ١٢,٤٥٠ ر.س</span>
+</div>
+<div class="bar-chart-container relative pt-4">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between py-1 opacity-10 pointer-events-none">
+<div class="border-b border-outline"></div>
+<div class="border-b border-outline"></div>
+<div class="border-b border-outline"></div>
+<div class="border-b border-outline"></div>
+</div>
+<!-- Bars -->
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="bar-item w-full" style="height: 60%;"></div>
+<span class="text-[10px] text-on-surface-variant">أحد</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="bar-item w-full" style="height: 45%;"></div>
+<span class="text-[10px] text-on-surface-variant">اثنين</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="bar-item w-full" style="height: 85%;"></div>
+<span class="text-[10px] text-on-surface-variant">ثلاثاء</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="bar-item w-full" style="height: 30%;"></div>
+<span class="text-[10px] text-on-surface-variant">أربعاء</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="bar-item w-full" style="height: 95%;"></div>
+<span class="text-[10px] text-on-surface-variant">خميس</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="bar-item w-full opacity-50" style="height: 20%;"></div>
+<span class="text-[10px] text-on-surface-variant">جمعة</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="bar-item w-full opacity-50" style="height: 35%;"></div>
+<span class="text-[10px] text-on-surface-variant">سبت</span>
+</div>
+</div>
+</div>
+<!-- Savings Plan (Small Card) -->
+<div class="md:col-span-4 bg-primary text-on-primary rounded-xl p-6 flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="font-headline font-bold text-lg mb-2">خطة الادخار</h3>
+<p class="text-primary-fixed text-sm opacity-80">سيارة الأحلام</p>
+</div>
+<div class="relative z-10 mt-8">
+<div class="flex justify-between text-xs mb-2 font-label">
+<span>تم جمع ٧٥,٠٠٠ ر.س</span>
+<span>٧٥٪</span>
+</div>
+<div class="w-full bg-primary-container h-3 rounded-full overflow-hidden">
+<div class="bg-primary-fixed h-full w-3/4 rounded-full"></div>
+</div>
+<p class="text-[10px] mt-3 opacity-70">المتبقي: ٢٥,٠٠٠ ر.س للوصول للهدف</p>
+</div>
+<!-- Decorative element -->
+<div class="absolute -bottom-8 -right-8 w-32 h-32 bg-primary-container rounded-full opacity-20"></div>
+</div>
+<!-- Top Categories (Medium Card) -->
+<div class="md:col-span-6 bg-surface-container-low rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline font-bold text-lg text-on-surface">أعلى الفئات</h3>
+<button class="text-primary text-xs font-semibold">المزيد</button>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="font-bold text-sm">المطاعم والكافيهات</span>
+<span class="text-sm font-label font-bold text-primary">٤٢٪</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full">
+<div class="bg-primary h-full w-[42%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="font-bold text-sm">التسوق والترفيه</span>
+<span class="text-sm font-label font-bold text-primary">٢٨٪</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full">
+<div class="bg-primary h-full w-[28%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">commute</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="font-bold text-sm">النقل والمواصلات</span>
+<span class="text-sm font-label font-bold text-primary">١٥٪</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full">
+<div class="bg-primary h-full w-[15%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Insight Card (Medium Card) -->
+<div class="md:col-span-6 bg-surface-container-lowest rounded-xl p-6 flex flex-col justify-center items-center text-center">
+<div class="w-16 h-16 bg-tertiary-fixed rounded-2xl flex items-center justify-center text-tertiary mb-4">
+<span class="material-symbols-outlined text-3xl">insights</span>
+</div>
+<h4 class="font-headline font-bold text-lg text-on-surface">تحليل ذكي</h4>
+<p class="text-on-surface-variant text-sm mt-2 px-4">لقد قمت بتوفير <span class="text-primary font-bold">١,٢٠٠ ر.س</span> هذا الشهر مقارنة بالشهر الماضي. استمر في التحكم بمصاريف المطاعم!</p>
+<div class="mt-6 flex gap-3">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full text-sm font-semibold">تحميل التقرير</button>
+<button class="bg-secondary-container text-on-secondary-container px-6 py-2 rounded-full text-sm font-semibold">مشاركة</button>
+</div>
+</div>
+</div>
+<!-- Custom Transactions Table/List (Editorial Style) -->
+<section class="mt-12">
+<h3 class="font-headline font-bold text-xl text-on-surface mb-6">أهم العمليات الأخيرة</h3>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-4 bg-surface hover:bg-surface-container-low transition-colors rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">إيجار المكتب</p>
+<p class="text-xs text-on-surface-variant">١٢ أكتوبر ٢٠٢٣</p>
+</div>
+</div>
+<div class="text-left">
+<p class="font-label font-bold text-error">- ٤,٥٠٠ ر.س</p>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">معتمد</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary">add_card</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">إيداع راتب</p>
+<p class="text-xs text-on-surface-variant">٠١ أكتوبر ٢٠٢٣</p>
+</div>
+</div>
+<div class="text-left">
+<p class="font-label font-bold text-primary">+ ١٥,٠٠٠ ر.س</p>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">مكتمل</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 pt-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl z-50 rounded-t-3xl border-t border-slate-100 dark:border-slate-800 shadow-[0_-10px_40px_rgba(25,28,29,0.05)]">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 p-2 hover:bg-slate-50 dark:hover:bg-slate-800 transform transition-all duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-xs font-medium uppercase tracking-wider mt-1">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 p-2 hover:bg-slate-50 dark:hover:bg-slate-800 transform transition-all duration-300" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-inter text-xs font-medium uppercase tracking-wider mt-1">المعاملات</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 p-2 hover:bg-slate-50 dark:hover:bg-slate-800 transform transition-all duration-300" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-inter text-xs font-medium uppercase tracking-wider mt-1">الميزانية</span>
+</a>
+<!-- ACTIVE TAB: Analytics -->
+<a class="flex flex-col items-center justify-center bg-teal-100 dark:bg-teal-900/40 text-teal-900 dark:text-teal-100 rounded-2xl px-5 py-1.5 transform transition-all duration-300" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-inter text-xs font-medium uppercase tracking-wider mt-1">التحليلات</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 p-2 hover:bg-slate-50 dark:hover:bg-slate-800 transform transition-all duration-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-xs font-medium uppercase tracking-wider mt-1">الحساب</span>
+</a>
+</nav>
+</body></html>

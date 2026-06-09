@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d6e5e6",
+                    "secondary": "#536162",
+                    "on-tertiary-container": "#ebf4ff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#96f1fa",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-container": "#d6e5e6",
+                    "primary-container": "#007b83",
+                    "tertiary-fixed": "#cbe6ff",
+                    "primary-fixed-dim": "#7ad5dd",
+                    "on-secondary-container": "#596768",
+                    "inverse-primary": "#7ad5dd",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#006067",
+                    "on-tertiary-fixed": "#001e30",
+                    "tertiary-fixed-dim": "#8ecdff",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "on-error-container": "#93000a",
+                    "outline": "#6e797a",
+                    "on-primary-container": "#d0fbff",
+                    "on-primary-fixed-variant": "#004f54",
+                    "inverse-surface": "#2e3132",
+                    "on-surface": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#191c1d",
+                    "tertiary-container": "#2575a6",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#d9dadb",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary-fixed": "#002022",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#006970",
+                    "background": "#f8f9fa",
+                    "surface-container-low": "#f3f4f5",
+                    "on-secondary-fixed-variant": "#3c494a",
+                    "on-secondary-fixed": "#101e1f",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-container": "#edeeef",
+                    "surface-variant": "#e1e3e4",
+                    "secondary-fixed-dim": "#bac9ca",
+                    "outline-variant": "#bdc9ca",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary": "#005c88",
+                    "on-tertiary-fixed-variant": "#004b71",
+                    "on-surface-variant": "#3e494a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-slate-50/80 backdrop-blur-xl flex justify-between items-center px-6 h-16 w-full docked full-width top-0 sticky z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-teal-800" data-icon="account_balance_wallet">account_balance_wallet</span>
+<h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-800 to-teal-500">The Lucid Ledger</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-slate-200/50 transition-colors p-2 rounded-full active:scale-95 duration-150 ease-out">
+<span class="material-symbols-outlined text-teal-800" data-icon="picture_as_pdf">picture_as_pdf</span>
+</button>
+</div>
+</header>
+<main class="px-6 pt-6 max-w-5xl mx-auto">
+<!-- Hero Balance Section -->
+<section class="mb-10 text-right">
+<p class="text-on-surface-variant font-label text-xs uppercase tracking-widest mb-1">الرصيد الإجمالي</p>
+<div class="flex items-baseline justify-start gap-2">
+<h2 class="text-5xl font-extrabold text-primary tracking-tight">١٢٤,٥٨٠.٠٠</h2>
+<span class="text-xl font-bold text-primary-container">ر.س</span>
+</div>
+</section>
+<!-- Bento Grid: Growth & Insights -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<!-- Growth Chart (Bento Large) -->
+<div class="md:col-span-2 bg-surface-container-lowest rounded-3xl p-6 relative overflow-hidden">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-lg">نمو المحفظة</h3>
+<span class="text-xs font-semibold text-primary px-3 py-1 bg-primary-fixed rounded-full">+١٢.٥٪</span>
+</div>
+<!-- Simple Vector Chart Placeholder -->
+<div class="h-48 w-full flex items-end gap-1">
+<div class="flex-1 bg-primary-container/10 rounded-t-lg h-[40%]"></div>
+<div class="flex-1 bg-primary-container/10 rounded-t-lg h-[55%]"></div>
+<div class="flex-1 bg-primary-container/10 rounded-t-lg h-[45%]"></div>
+<div class="flex-1 bg-primary-container/10 rounded-t-lg h-[70%]"></div>
+<div class="flex-1 bg-primary-container/10 rounded-t-lg h-[60%]"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t-lg h-[85%]"></div>
+<div class="flex-1 bg-primary rounded-t-lg h-[95%]"></div>
+</div>
+<div class="absolute bottom-0 right-0 left-0 h-24 bg-gradient-to-t from-primary-fixed-dim/10 to-transparent"></div>
+</div>
+<!-- Quick Stats Column -->
+<div class="flex flex-col gap-6">
+<!-- Income Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-6 flex items-center justify-between">
+<div>
+<p class="text-on-surface-variant text-xs mb-1">الدخل الشهري</p>
+<p class="text-xl font-bold text-primary">١٨,٤٠٠ ر.س</p>
+</div>
+<div class="bg-primary-fixed p-3 rounded-2xl">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_downward">arrow_downward</span>
+</div>
+</div>
+<!-- Expenses Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-6 flex items-center justify-between">
+<div>
+<p class="text-on-surface-variant text-xs mb-1">المصروفات</p>
+<p class="text-xl font-bold text-error">٥,٩٢٠ ر.س</p>
+</div>
+<div class="bg-error-container p-3 rounded-2xl">
+<span class="material-symbols-outlined text-error" data-icon="arrow_upward">arrow_upward</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Latest Transactions -->
+<section class="mb-10">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-xl">آخر المعاملات</h3>
+<button class="text-primary font-bold text-sm">عرض الكل</button>
+</div>
+<div class="space-y-4">
+<!-- Transaction Item 1 -->
+<div class="bg-surface-container-lowest rounded-3xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div>
+<p class="font-bold">أمازون السعودية</p>
+<p class="text-xs text-on-surface-variant">اليوم، ٠٤:٣٠ م</p>
+</div>
+</div>
+<p class="font-bold text-error">-٤٥٠.٠٠ ر.س</p>
+</div>
+<!-- Transaction Item 2 -->
+<div class="bg-surface-container-lowest rounded-3xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="restaurant">restaurant</span>
+</div>
+<div>
+<p class="font-bold">مطعم لوسين</p>
+<p class="text-xs text-on-surface-variant">أمس، ٠٩:١٥ م</p>
+</div>
+</div>
+<p class="font-bold text-error">-٨٢٠.٠٠ ر.س</p>
+</div>
+<!-- Transaction Item 3 -->
+<div class="bg-surface-container-lowest rounded-3xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+</div>
+<div>
+<p class="font-bold">إيداع راتب</p>
+<p class="text-xs text-on-surface-variant">٢٧ أكتوبر، ٠٨:٠٠ ص</p>
+</div>
+</div>
+<p class="font-bold text-primary">+٢٥,٠٠٠.٠٠ ر.س</p>
+</div>
+</div>
+</section>
+<!-- Decorative Action Banner -->
+<div class="relative h-40 rounded-[2rem] overflow-hidden mb-12 flex items-center px-8">
+<img alt="" class="absolute inset-0 w-full h-full object-cover grayscale opacity-20" data-alt="minimalist abstract background with soft teal gradients and subtle geometric architectural lines for financial trust" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgvv3LgGl4Hx7zdZPGnRWys-4ZnbgC7qpqIDs73f4sikGyfca6pJQXQ858wRhoVfNxDbpqbUBRqQd1GVXmTlfhkRnAQtaie1xBChcExq1bzeUHCVEIvsSssthmw3VXfw2WOK4atWVriKgj0WWdehyg5GYnjtD3B8Ar-4BsIAJjIoYwW_VGbBw06uUYJyKa6j9ggURjrSf7ZnRTn-O5C8WEuWvMI42rlCYHKmmR5ZPctcjNiEfPtJLuw7gTk36NK39vGDjxfAez52Y"/>
+<div class="relative z-10">
+<h4 class="text-xl font-bold mb-2">هل تريد توفير المزيد؟</h4>
+<p class="text-on-surface-variant text-sm mb-4 max-w-xs">أنشئ ميزانية ذكية الآن وتابع أهدافك المالية بكل سهولة.</p>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold text-sm">ابدأ الآن</button>
+</div>
+</div>
+</main>
+<!-- Navigation Drawer (Conceptual side link) -->
+<aside class="hidden lg:flex fixed left-0 top-16 w-80 h-screen flex-col p-6 bg-slate-50 border-r border-slate-100 z-40">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-slate-200">
+<img alt="User Profile" data-alt="professional male profile portrait with friendly expression and clean corporate attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBRrdWs4TDw69iER2h3JA_sik-SKe45dj2RO-zcJ3Em_zDc8zNkWb5NsMsAsdwd0sVHJvZW9Cu7uWoY8l6Z_myNMrovnvzDHuESZS8_ZEq9HfsqqOp-6IBbF08WdEgnM63wJKu-wBOd6hKlzKegCpq7SQHV3rnYhjVVBRaPmOOxUrXIuJ4NARzWS6DluLSImg7HX-TIUKiiV--2VbqBx4gPSx95SIt5N0Bzy9ZCWl7hpxFSjRhtoTDDOBd8hUaWguVgR8ceLpVfes"/>
+</div>
+<div>
+<p class="font-bold text-teal-800">عبدالعزيز محمد</p>
+<p class="text-xs text-slate-500">عضو بلاتيني</p>
+</div>
+</div>
+<nav class="space-y-2">
+<a class="flex items-center gap-4 p-3 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+<span>تنبيهات بنكية</span>
+</a>
+<a class="flex items-center gap-4 p-3 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="file_download">file_download</span>
+<span>تصدير التقارير</span>
+</a>
+<a class="flex items-center gap-4 p-3 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>الإعدادات</span>
+</a>
+<a class="flex items-center gap-4 p-3 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span>المساعدة</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-teal-50 rounded-2xl">
+<p class="text-xs text-teal-800 mb-1">الرصيد المتاح:</p>
+<p class="font-bold text-teal-900">٤٥,٠٠٠ ر.س</p>
+</div>
+</aside>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 pt-2 bg-white/80 backdrop-blur-2xl z-50 rounded-t-3xl shadow-[0_-10px_40px_rgba(25,28,29,0.05)] border-t border-slate-100">
+<!-- Active Tab: الرئيسية (Home) -->
+<a class="flex flex-col items-center justify-center bg-teal-100 text-teal-900 rounded-2xl px-5 py-1.5 transform transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider mt-1">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 p-2 hover:bg-slate-50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider mt-1">المعاملات</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 p-2 hover:bg-slate-50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider mt-1">الميزانية</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 p-2 hover:bg-slate-50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider mt-1">التحليلات</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 p-2 hover:bg-slate-50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider mt-1">الحساب</span>
+</a>
+</nav>
+</body></html>

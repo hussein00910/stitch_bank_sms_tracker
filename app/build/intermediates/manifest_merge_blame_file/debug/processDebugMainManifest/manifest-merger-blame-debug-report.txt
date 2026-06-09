@@ -1,0 +1,180 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.stitch.bank.tracker"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->INJECTED
+8        android:minSdkVersion="24"
+8-->INJECTED
+9        android:targetSdkVersion="34" />
+9-->INJECTED
+10
+11    <uses-permission android:name="android.permission.READ_SMS" />
+11-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:4:5-67
+11-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+12-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:5:5-70
+12-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:5:22-67
+13
+14    <permission
+14-->[androidx.core:core:1.12.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\a1442ccc1663ba72f711ea9c40f97542\workspace\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+15        android:name="com.stitch.bank.tracker.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+15-->[androidx.core:core:1.12.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\a1442ccc1663ba72f711ea9c40f97542\workspace\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+16        android:protectionLevel="signature" />
+16-->[androidx.core:core:1.12.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\a1442ccc1663ba72f711ea9c40f97542\workspace\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+17
+18    <uses-permission android:name="com.stitch.bank.tracker.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+18-->[androidx.core:core:1.12.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\a1442ccc1663ba72f711ea9c40f97542\workspace\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+18-->[androidx.core:core:1.12.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\a1442ccc1663ba72f711ea9c40f97542\workspace\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+19
+20    <application
+20-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:7:5-34:19
+21        android:allowBackup="true"
+21-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:8:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.12.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\a1442ccc1663ba72f711ea9c40f97542\workspace\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
+23        android:dataExtractionRules="@xml/data_extraction_rules"
+23-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:9:9-65
+24        android:debuggable="true"
+25        android:extractNativeLibs="false"
+25-->INJECTED
+26        android:fullBackupContent="@xml/backup_rules"
+26-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:10:9-54
+27        android:icon="@mipmap/ic_launcher"
+27-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:11:9-43
+28        android:label="Bank SMS Tracker"
+28-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:12:9-41
+29        android:roundIcon="@mipmap/ic_launcher_round"
+29-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:13:9-54
+30        android:supportsRtl="true"
+30-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:14:9-35
+31        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+31-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:15:9-65
+32        <activity
+32-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:17:9-25:20
+33            android:name="com.stitch.bank.tracker.MainActivity"
+33-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:18:13-41
+34            android:exported="true"
+34-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:19:13-36
+35            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+35-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:20:13-69
+36            <intent-filter>
+36-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:21:13-24:29
+37                <action android:name="android.intent.action.MAIN" />
+37-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:22:17-69
+37-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:22:25-66
+38
+39                <category android:name="android.intent.category.LAUNCHER" />
+39-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:23:17-77
+39-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:23:27-74
+40            </intent-filter>
+41        </activity>
+42
+43        <receiver
+43-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:27:9-32:20
+44            android:name="com.stitch.bank.tracker.SmsReceiver"
+44-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:27:19-46
+45            android:exported="true"
+45-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:27:47-70
+46            android:permission="android.permission.BROADCAST_SMS" >
+46-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:28:13-66
+47            <intent-filter>
+47-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:29:13-31:29
+48                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+48-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:30:17-82
+48-->C:\Users\TsT\Downloads\stitch_bank_sms_tracker\app\src\main\AndroidManifest.xml:30:25-79
+49            </intent-filter>
+50        </receiver>
+51
+52        <activity
+52-->[androidx.compose.ui:ui-test-manifest:1.5.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\ff83bc2e10e4a8141ee257aecc3c7762\workspace\transformed\ui-test-manifest-1.5.0\AndroidManifest.xml:23:9-25:39
+53            android:name="androidx.activity.ComponentActivity"
+53-->[androidx.compose.ui:ui-test-manifest:1.5.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\ff83bc2e10e4a8141ee257aecc3c7762\workspace\transformed\ui-test-manifest-1.5.0\AndroidManifest.xml:24:13-63
+54            android:exported="true" />
+54-->[androidx.compose.ui:ui-test-manifest:1.5.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\ff83bc2e10e4a8141ee257aecc3c7762\workspace\transformed\ui-test-manifest-1.5.0\AndroidManifest.xml:25:13-36
+55        <activity
+55-->[androidx.compose.ui:ui-tooling-android:1.5.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\fce2d348b4dd3cdd03fe12efa9728414\workspace\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+56            android:name="androidx.compose.ui.tooling.PreviewActivity"
+56-->[androidx.compose.ui:ui-tooling-android:1.5.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\fce2d348b4dd3cdd03fe12efa9728414\workspace\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+57            android:exported="true" />
+57-->[androidx.compose.ui:ui-tooling-android:1.5.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\fce2d348b4dd3cdd03fe12efa9728414\workspace\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+58
+59        <provider
+59-->[androidx.emoji2:emoji2:1.4.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\c72376453106c5a791a2be8b0601950a\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
+60            android:name="androidx.startup.InitializationProvider"
+60-->[androidx.emoji2:emoji2:1.4.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\c72376453106c5a791a2be8b0601950a\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
+61            android:authorities="com.stitch.bank.tracker.androidx-startup"
+61-->[androidx.emoji2:emoji2:1.4.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\c72376453106c5a791a2be8b0601950a\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
+62            android:exported="false" >
+62-->[androidx.emoji2:emoji2:1.4.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\c72376453106c5a791a2be8b0601950a\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
+63            <meta-data
+63-->[androidx.emoji2:emoji2:1.4.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\c72376453106c5a791a2be8b0601950a\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
+64                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+64-->[androidx.emoji2:emoji2:1.4.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\c72376453106c5a791a2be8b0601950a\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
+65                android:value="androidx.startup" />
+65-->[androidx.emoji2:emoji2:1.4.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\c72376453106c5a791a2be8b0601950a\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
+66            <meta-data
+66-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\8d19df1e6bb6a52de615d1b35e7b7ad5\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+67                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+67-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\8d19df1e6bb6a52de615d1b35e7b7ad5\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+68                android:value="androidx.startup" />
+68-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\8d19df1e6bb6a52de615d1b35e7b7ad5\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+69            <meta-data
+69-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+70                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+70-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+71                android:value="androidx.startup" />
+71-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+72        </provider>
+73
+74        <service
+74-->[androidx.room:room-runtime-android:2.8.4] C:\Users\TsT\.gradle\caches\9.3.1\transforms\815a9fe2469c3bff71c256397faaeaaf\workspace\transformed\room-runtime\AndroidManifest.xml:24:9-28:63
+75            android:name="androidx.room.MultiInstanceInvalidationService"
+75-->[androidx.room:room-runtime-android:2.8.4] C:\Users\TsT\.gradle\caches\9.3.1\transforms\815a9fe2469c3bff71c256397faaeaaf\workspace\transformed\room-runtime\AndroidManifest.xml:25:13-74
+76            android:directBootAware="true"
+76-->[androidx.room:room-runtime-android:2.8.4] C:\Users\TsT\.gradle\caches\9.3.1\transforms\815a9fe2469c3bff71c256397faaeaaf\workspace\transformed\room-runtime\AndroidManifest.xml:26:13-43
+77            android:exported="false" />
+77-->[androidx.room:room-runtime-android:2.8.4] C:\Users\TsT\.gradle\caches\9.3.1\transforms\815a9fe2469c3bff71c256397faaeaaf\workspace\transformed\room-runtime\AndroidManifest.xml:27:13-37
+78
+79        <receiver
+79-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+80            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+80-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+81            android:directBootAware="false"
+81-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+82            android:enabled="true"
+82-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+83            android:exported="true"
+83-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+84            android:permission="android.permission.DUMP" >
+84-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+85            <intent-filter>
+85-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+86                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+86-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+86-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+87            </intent-filter>
+88            <intent-filter>
+88-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+89                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+89-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+89-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+90            </intent-filter>
+91            <intent-filter>
+91-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+92                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+92-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+92-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+93            </intent-filter>
+94            <intent-filter>
+94-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+95                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+95-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+95-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TsT\.gradle\caches\9.3.1\transforms\058b4621a07186e18dbd08d3202d8462\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+96            </intent-filter>
+97        </receiver>
+98    </application>
+99
+100</manifest>

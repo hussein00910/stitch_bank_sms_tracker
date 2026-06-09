@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إعدادات المزامنة - The Lucid Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#edeeef",
+                    "inverse-primary": "#7ad5dd",
+                    "on-error": "#ffffff",
+                    "tertiary": "#005c88",
+                    "primary-container": "#007b83",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#6e797a",
+                    "tertiary-fixed-dim": "#8ecdff",
+                    "surface-bright": "#f8f9fa",
+                    "on-tertiary-fixed-variant": "#004b71",
+                    "on-background": "#191c1d",
+                    "surface-variant": "#e1e3e4",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed": "#96f1fa",
+                    "surface-container-high": "#e7e8e9",
+                    "primary-fixed-dim": "#7ad5dd",
+                    "surface-dim": "#d9dadb",
+                    "outline-variant": "#bdc9ca",
+                    "on-surface": "#191c1d",
+                    "primary": "#006067",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#3c494a",
+                    "on-secondary-fixed": "#101e1f",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#d0fbff",
+                    "error": "#ba1a1a",
+                    "background": "#f8f9fa",
+                    "on-secondary-container": "#596768",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-container": "#ebf4ff",
+                    "surface": "#f8f9fa",
+                    "surface-tint": "#006970",
+                    "tertiary-container": "#2575a6",
+                    "on-primary-fixed-variant": "#004f54",
+                    "on-surface-variant": "#3e494a",
+                    "inverse-surface": "#2e3132",
+                    "on-primary-fixed": "#002022",
+                    "secondary-fixed": "#d6e5e6",
+                    "surface-container-low": "#f3f4f5",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#cbe6ff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "secondary": "#536162",
+                    "secondary-fixed-dim": "#bac9ca",
+                    "secondary-container": "#d6e5e6",
+                    "on-tertiary-fixed": "#001e30",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope", "IBM Plex Sans Arabic"],
+                    "body": ["Inter", "IBM Plex Sans Arabic"],
+                    "label": ["Inter", "IBM Plex Sans Arabic"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', 'IBM Plex Sans Arabic', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', 'IBM Plex Sans Arabic', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_20px_40px_rgba(25,28,29,0.05)]">
+<div class="flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="minimalist user avatar illustration with soft teal background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOOMfdDqyCvbBrIkTv3lxxEHeDhU5PJoi0uFNC57AFDXNOrPYkk33HNTojqB9iPNT-keL5EOHDuuP4njk_y_0cB5mePfHyKIMJzecUZjAks0zD2rM-5Jfys1xJC7Uq8IoB7uGJHcJA-gHoWVH3g8F7LVN6CEymj4J7mDjs2M0F-G_HSY0MBmX8KGcePXPNszNIiPOMbHCa1Pbak7FAEOSDJ8mjt8mzakMy1Q3ezQmOmaci8DbIs13WQFvbXlG6uAfOd8XTDp4s8bc"/>
+</div>
+<h1 class="font-['Manrope','IBM_Plex_Sans_Arabic'] headline-sm tracking-tight text-lg font-bold text-[#006067] dark:text-[#96f1fa]">إعدادات المزامنة</h1>
+</div>
+<button class="material-symbols-outlined text-[#006067] dark:text-[#96f1fa] hover:bg-[#f8f9fa] dark:hover:bg-slate-800 transition-colors p-2 rounded-full scale-95 active:opacity-80 transition-transform">notifications</button>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto space-y-8">
+<!-- Privacy First Security Banner -->
+<section class="relative overflow-hidden rounded-full p-1 bg-gradient-to-r from-primary to-primary-container">
+<div class="bg-surface-container-lowest rounded-full px-6 py-4 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div>
+<h2 class="text-primary font-bold text-base">الخصوصية أولاً</h2>
+<p class="text-on-surface-variant text-sm">بياناتك مشفرة بالكامل ولا يتم مشاركتها مع أي طرف ثالث.</p>
+</div>
+</div>
+</section>
+<!-- Toggle Controls (Asymmetric Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Auto-Sync Card -->
+<div class="bg-surface-container-low p-6 rounded-full flex flex-col justify-between aspect-square md:aspect-auto">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary-container text-3xl">sync</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="mt-4">
+<h3 class="text-lg font-bold text-on-surface">المزامنة التلقائية</h3>
+<p class="text-on-surface-variant text-xs mt-1">تحديث بياناتك المالية في الخلفية باستمرار.</p>
+</div>
+</div>
+<!-- Smart Analysis Card -->
+<div class="bg-surface-container-lowest p-6 rounded-full shadow-[0_20px_40px_rgba(25,28,29,0.05)] flex flex-col justify-between aspect-square md:aspect-auto">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-tertiary-container text-3xl">insights</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="mt-4">
+<h3 class="text-lg font-bold text-on-surface">التحليل الذكي</h3>
+<p class="text-on-surface-variant text-xs mt-1">تصنيف المصروفات تلقائياً باستخدام الذكاء الاصطناعي.</p>
+</div>
+</div>
+</div>
+<!-- Detected Banks List -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-2">
+<h2 class="text-xl font-bold text-on-surface">البنوك المكتشفة</h2>
+<span class="text-primary text-sm font-medium">3 بنوك</span>
+</div>
+<div class="bg-surface-container-low rounded-full p-2 space-y-1">
+<!-- SNB -->
+<div class="bg-surface-container-lowest rounded-full p-4 flex items-center justify-between hover:bg-surface-bright transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-primary">SNB</div>
+<div>
+<p class="font-bold text-on-surface">البنك الأهلي السعودي</p>
+<p class="text-xs text-on-surface-variant">آخر مزامنة: منذ ساعتين</p>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-[#e8f5e9] text-[#2e7d32] px-3 py-1 rounded-full text-xs font-bold">
+<span class="w-2 h-2 bg-[#2e7d32] rounded-full"></span>
+                        نشط
+                    </div>
+</div>
+<!-- Al Rajhi -->
+<div class="bg-surface-container-lowest rounded-full p-4 flex items-center justify-between hover:bg-surface-bright transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-primary">ARB</div>
+<div>
+<p class="font-bold text-on-surface">مصرف الراجحي</p>
+<p class="text-xs text-on-surface-variant">آخر مزامنة: أمس</p>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-[#e8f5e9] text-[#2e7d32] px-3 py-1 rounded-full text-xs font-bold">
+<span class="w-2 h-2 bg-[#2e7d32] rounded-full"></span>
+                        نشط
+                    </div>
+</div>
+<!-- ANB -->
+<div class="bg-surface-container-lowest rounded-full p-4 flex items-center justify-between hover:bg-surface-bright transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-primary">ANB</div>
+<div>
+<p class="font-bold text-on-surface">البنك العربي الوطني</p>
+<p class="text-xs text-on-surface-variant">يتطلب إعادة الاتصال</p>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-error-container text-error px-3 py-1 rounded-full text-xs font-bold">
+<span class="w-2 h-2 bg-error rounded-full"></span>
+                        غير متصل
+                    </div>
+</div>
+</div>
+</section>
+<!-- Sync All Accounts Button Container -->
+<div class="fixed bottom-24 left-0 w-full px-6 flex justify-center pointer-events-none">
+<button class="pointer-events-auto w-full max-w-2xl h-16 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-lg flex items-center justify-center gap-3 shadow-[0_20px_40px_rgba(0,96,103,0.2)] active:scale-95 transition-transform">
+<span class="material-symbols-outlined">sync</span>
+                مزامنة جميع الحسابات الآن
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-[#bdc9ca]/15 rounded-t-xl h-20 px-4 pb-safe flex justify-around items-center shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
+<a class="flex flex-col items-center justify-center text-[#596768] dark:text-slate-400 hover:text-[#007b83] transition-all tap-highlight-transparent active:scale-90" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter','IBM_Plex_Sans_Arabic'] text-[10px] font-medium mt-1">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#596768] dark:text-slate-400 hover:text-[#007b83] transition-all tap-highlight-transparent active:scale-90" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter','IBM_Plex_Sans_Arabic'] text-[10px] font-medium mt-1">دفتر الحسابات</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#596768] dark:text-slate-400 hover:text-[#007b83] transition-all tap-highlight-transparent active:scale-90" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-['Inter','IBM_Plex_Sans_Arabic'] text-[10px] font-medium mt-1">الرؤى</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#006067] dark:text-[#96f1fa] font-bold transition-all tap-highlight-transparent active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sync</span>
+<span class="font-['Inter','IBM_Plex_Sans_Arabic'] text-[10px] mt-1">مزامنة</span>
+</a>
+</nav>
+</body></html>
