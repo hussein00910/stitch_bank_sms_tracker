@@ -5,40 +5,31 @@ import android.content.Context
 import android.content.Intent
 import android.provider.Telephony
 import com.stitch.bank.tracker.data.AppDatabase
-import com.stitch.bank.tracker.data.TransactionEntity
-import com.stitch.bank.tracker.util.TransactionParser
+import com.stitch.bank.tracker.util.NotificationHelper
+import com.stitch.bank.tracker.util.SettingsManager
+import com.stitch.bank.tracker.util.SmsTransactionProcessor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class SmsReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        if (intent.action == Telephony.Sms.Intents.SMS_RECEIVED_ACTION) {
-            val messages = Telephony.Sms.Intents.getMessagesFromIntent(intent)
+        if (intent.action != Telephony.Sms.Intents.SMS_RECEIVED_ACTION) return
+
+        val messages = Telephony.Sms.Intents.getMessagesFromIntent(intent)
+        val db = AppDatabase.getDatabase(context)
+        val settingsManager = SettingsManager(context)
+        NotificationHelper.ensureChannel(context)
+
+        CoroutineScope(Dispatchers.IO).launch {
             for (sms in messages) {
-                val body = sms.displayMessageBody
+                val body = sms.displayMessageBody ?: continue
                 val sender = sms.displayOriginatingAddress ?: "Unknown"
                 val date = sms.timestampMillis
 
-                if (TransactionParser.isBankMessage(body)) {
-                    val amount = TransactionParser.extractAmount(body)
-                    val isIncome = TransactionParser.isIncome(body)
-                    
-                    val transaction = TransactionEntity(
-                        sender = sender,
-                        body = body,
-                        amount = amount,
-                        date = date,
-                        isIncome = isIncome
-                    )
-
-                    // حفظ في قاعدة البيانات في الخلفية
-                    val db = AppDatabase.getDatabase(context)
-                    CoroutineScope(Dispatchers.IO).launch {
-                        if (!db.transactionDao().exists(body, date)) {
-                            db.transactionDao().insertTransaction(transaction)
-                        }
-                    }
+                val transaction = SmsTransactionProcessor.process(db, sender, body, date)
+                if (transaction != null && settingsManager.settings.value.notificationsEnabled) {
+                    NotificationHelper.notifyNewTransaction(context, transaction, settingsManager.settings.value.currencyCode)
                 }
             }
         }

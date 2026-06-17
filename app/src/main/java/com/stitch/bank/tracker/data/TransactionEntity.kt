@@ -10,5 +10,9 @@ data class TransactionEntity(
     val body: String,
     val amount: Double,
     val date: Long,
-    val isIncome: Boolean
+    val isIncome: Boolean,
+    val merchant: String? = null,
+    val bankName: String = sender,
+    val balanceAfter: Double? = null,
+    val categoryId: Int? = null
 )
