@@ -76,17 +76,21 @@ class MainActivity : FragmentActivity() {
     private lateinit var settingsManager: SettingsManager
     private val isLockedState = mutableStateOf(false)
 
+    // Launching our own file pickers triggers onPause; skip the auto-lock for that
+    // momentary handoff so the PIN screen doesn't interrupt export/backup/restore.
+    private var isAwaitingPickerResult = false
+
     private val csvExportLauncher = registerForActivityResult(
         ActivityResultContracts.CreateDocument("text/csv")
-    ) { uri -> uri?.let { exportCsvToUri(it) } }
+    ) { uri -> isAwaitingPickerResult = false; uri?.let { exportCsvToUri(it) } }
 
     private val backupLauncher = registerForActivityResult(
         ActivityResultContracts.CreateDocument("application/json")
-    ) { uri -> uri?.let { exportBackupToUri(it) } }
+    ) { uri -> isAwaitingPickerResult = false; uri?.let { exportBackupToUri(it) } }
 
     private val restoreLauncher = registerForActivityResult(
         ActivityResultContracts.OpenDocument()
-    ) { uri -> uri?.let { restoreBackupFromUri(it) } }
+    ) { uri -> isAwaitingPickerResult = false; uri?.let { restoreBackupFromUri(it) } }
 
     private val permissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -153,9 +157,9 @@ class MainActivity : FragmentActivity() {
                             onRecolorAccount = { account, color ->
                                 lifecycleScope.launch(Dispatchers.IO) { db.accountDao().upsert(account.copy(colorHex = color)) }
                             },
-                            onExportCsv = { csvExportLauncher.launch(defaultExportFileName("csv")) },
-                            onBackup = { backupLauncher.launch(defaultExportFileName("json")) },
-                            onRestore = { restoreLauncher.launch(arrayOf("application/json", "text/*", "*/*")) }
+                            onExportCsv = { isAwaitingPickerResult = true; csvExportLauncher.launch(defaultExportFileName("csv")) },
+                            onBackup = { isAwaitingPickerResult = true; backupLauncher.launch(defaultExportFileName("json")) },
+                            onRestore = { isAwaitingPickerResult = true; restoreLauncher.launch(arrayOf("application/json", "text/*", "*/*")) }
                         )
                     }
                 }
@@ -165,7 +169,7 @@ class MainActivity : FragmentActivity() {
 
     override fun onPause() {
         super.onPause()
-        if (::settingsManager.isInitialized && settingsManager.settings.value.isPinSet) {
+        if (!isAwaitingPickerResult && ::settingsManager.isInitialized && settingsManager.settings.value.isPinSet) {
             isLockedState.value = true
         }
     }
