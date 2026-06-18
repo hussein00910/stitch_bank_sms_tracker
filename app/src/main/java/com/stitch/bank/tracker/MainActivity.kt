@@ -1,9 +1,11 @@
 package com.stitch.bank.tracker
 
 import android.Manifest
+import android.content.ActivityNotFoundException
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.biometric.BiometricManager
@@ -157,9 +159,9 @@ class MainActivity : FragmentActivity() {
                             onRecolorAccount = { account, color ->
                                 lifecycleScope.launch(Dispatchers.IO) { db.accountDao().upsert(account.copy(colorHex = color)) }
                             },
-                            onExportCsv = { isAwaitingPickerResult = true; csvExportLauncher.launch(defaultExportFileName("csv")) },
-                            onBackup = { isAwaitingPickerResult = true; backupLauncher.launch(defaultExportFileName("json")) },
-                            onRestore = { isAwaitingPickerResult = true; restoreLauncher.launch(arrayOf("application/json", "text/*", "*/*")) }
+                            onExportCsv = { launchPicker { csvExportLauncher.launch(defaultExportFileName("csv")) } },
+                            onBackup = { launchPicker { backupLauncher.launch(defaultExportFileName("json")) } },
+                            onRestore = { launchPicker { restoreLauncher.launch(arrayOf("application/json", "text/*", "*/*")) } }
                         )
                     }
                 }
@@ -180,6 +182,17 @@ class MainActivity : FragmentActivity() {
             perms.add(Manifest.permission.POST_NOTIFICATIONS)
         }
         return perms.toTypedArray()
+    }
+
+    /** Launches a SAF picker, guarding against devices/ROMs with no document picker app and against the resulting onPause from triggering the PIN lock. */
+    private fun launchPicker(launch: () -> Unit) {
+        isAwaitingPickerResult = true
+        try {
+            launch()
+        } catch (e: ActivityNotFoundException) {
+            isAwaitingPickerResult = false
+            Toast.makeText(this, "لا يوجد تطبيق على هذا الجهاز لاختيار الملفات", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun defaultExportFileName(extension: String): String {
@@ -239,27 +252,48 @@ class MainActivity : FragmentActivity() {
 
     private fun exportCsvToUri(uri: Uri) {
         lifecycleScope.launch(Dispatchers.IO) {
-            val transactions = db.transactionDao().getAllTransactions().first()
-            val categories = db.categoryDao().getAllCategories().first()
-            contentResolver.openOutputStream(uri)?.use { out ->
-                CsvExporter.export(transactions, categories, out)
+            try {
+                val transactions = db.transactionDao().getAllTransactions().first()
+                val categories = db.categoryDao().getAllCategories().first()
+                contentResolver.openOutputStream(uri)?.use { out ->
+                    CsvExporter.export(transactions, categories, out)
+                }
+                showToast("تم تصدير الملف بنجاح")
+            } catch (e: Exception) {
+                showToast("فشل تصدير الملف: ${e.message}")
             }
         }
     }
 
     private fun exportBackupToUri(uri: Uri) {
         lifecycleScope.launch(Dispatchers.IO) {
-            contentResolver.openOutputStream(uri)?.use { out ->
-                BackupManager.exportBackup(db, out)
+            try {
+                contentResolver.openOutputStream(uri)?.use { out ->
+                    BackupManager.exportBackup(db, out)
+                }
+                showToast("تم إنشاء النسخة الاحتياطية بنجاح")
+            } catch (e: Exception) {
+                showToast("فشل إنشاء النسخة الاحتياطية: ${e.message}")
             }
         }
     }
 
     private fun restoreBackupFromUri(uri: Uri) {
         lifecycleScope.launch(Dispatchers.IO) {
-            contentResolver.openInputStream(uri)?.use { input ->
-                BackupManager.importBackup(db, input)
+            try {
+                contentResolver.openInputStream(uri)?.use { input ->
+                    BackupManager.importBackup(db, input)
+                }
+                showToast("تمت الاستعادة بنجاح")
+            } catch (e: Exception) {
+                showToast("فشلت الاستعادة: الملف غير صالح أو تالف")
             }
+        }
+    }
+
+    private suspend fun showToast(message: String) {
+        withContext(Dispatchers.Main) {
+            Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG).show()
         }
     }
 }
