@@ -1,18 +1,25 @@
 package com.stitch.bank.tracker
 
 import android.Manifest
-import android.content.ActivityNotFoundException
+import android.content.ContentUris
+import android.content.ContentValues
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBalance
 import androidx.compose.material.icons.filled.Dashboard
@@ -20,6 +27,7 @@ import androidx.compose.material.icons.filled.PieChart
 import androidx.compose.material.icons.filled.ReceiptLong
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Sync
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -29,6 +37,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -43,6 +52,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
@@ -72,27 +82,13 @@ import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+data class BackupFile(val uri: Uri, val name: String, val lastModified: Long)
+
 class MainActivity : FragmentActivity() {
 
     private lateinit var db: AppDatabase
     private lateinit var settingsManager: SettingsManager
     private val isLockedState = mutableStateOf(false)
-
-    // Launching our own file pickers triggers onPause; skip the auto-lock for that
-    // momentary handoff so the PIN screen doesn't interrupt export/backup/restore.
-    private var isAwaitingPickerResult = false
-
-    private val csvExportLauncher = registerForActivityResult(
-        ActivityResultContracts.CreateDocument("text/csv")
-    ) { uri -> isAwaitingPickerResult = false; uri?.let { exportCsvToUri(it) } }
-
-    private val backupLauncher = registerForActivityResult(
-        ActivityResultContracts.CreateDocument("application/json")
-    ) { uri -> isAwaitingPickerResult = false; uri?.let { exportBackupToUri(it) } }
-
-    private val restoreLauncher = registerForActivityResult(
-        ActivityResultContracts.OpenDocument()
-    ) { uri -> isAwaitingPickerResult = false; uri?.let { restoreBackupFromUri(it) } }
 
     private val permissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -115,9 +111,20 @@ class MainActivity : FragmentActivity() {
             val accounts by db.accountDao().getAllAccounts().collectAsState(initial = emptyList())
             val settings by settingsManager.settings.collectAsState()
             val isLocked by isLockedState
+            var restoreChoices by remember { mutableStateOf<List<BackupFile>?>(null) }
 
             BankTrackerTheme(themeMode = settings.themeMode) {
                 CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+                    restoreChoices?.let { files ->
+                        RestoreBackupDialog(
+                            files = files,
+                            onDismiss = { restoreChoices = null },
+                            onSelect = { file ->
+                                restoreBackupFromUri(file.uri)
+                                restoreChoices = null
+                            }
+                        )
+                    }
                     if (isLocked && settings.isPinSet) {
                         LockScreen(
                             biometricAvailable = isBiometricAvailable(),
@@ -159,9 +166,17 @@ class MainActivity : FragmentActivity() {
                             onRecolorAccount = { account, color ->
                                 lifecycleScope.launch(Dispatchers.IO) { db.accountDao().upsert(account.copy(colorHex = color)) }
                             },
-                            onExportCsv = { launchPicker { csvExportLauncher.launch(defaultExportFileName("csv")) } },
-                            onBackup = { launchPicker { backupLauncher.launch(defaultExportFileName("json")) } },
-                            onRestore = { launchPicker { restoreLauncher.launch(arrayOf("application/json", "text/*", "*/*")) } }
+                            onExportCsv = {
+                                val uri = saveToDownloads(defaultExportFileName("csv"), "text/csv")
+                                if (uri != null) exportCsvToUri(uri)
+                                else Toast.makeText(this, "تعذر الحفظ في ذاكرة الهاتف", Toast.LENGTH_LONG).show()
+                            },
+                            onBackup = {
+                                val uri = saveToDownloads(defaultExportFileName("json"), "application/json")
+                                if (uri != null) exportBackupToUri(uri)
+                                else Toast.makeText(this, "تعذر الحفظ في ذاكرة الهاتف", Toast.LENGTH_LONG).show()
+                            },
+                            onRestore = { restoreChoices = listBackupFiles() }
                         )
                     }
                 }
@@ -171,7 +186,7 @@ class MainActivity : FragmentActivity() {
 
     override fun onPause() {
         super.onPause()
-        if (!isAwaitingPickerResult && ::settingsManager.isInitialized && settingsManager.settings.value.isPinSet) {
+        if (::settingsManager.isInitialized && settingsManager.settings.value.isPinSet) {
             isLockedState.value = true
         }
     }
@@ -181,23 +196,66 @@ class MainActivity : FragmentActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             perms.add(Manifest.permission.POST_NOTIFICATIONS)
         }
-        return perms.toTypedArray()
-    }
-
-    /** Launches a SAF picker, guarding against devices/ROMs with no document picker app and against the resulting onPause from triggering the PIN lock. */
-    private fun launchPicker(launch: () -> Unit) {
-        isAwaitingPickerResult = true
-        try {
-            launch()
-        } catch (e: ActivityNotFoundException) {
-            isAwaitingPickerResult = false
-            Toast.makeText(this, "لا يوجد تطبيق على هذا الجهاز لاختيار الملفات", Toast.LENGTH_LONG).show()
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            perms.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            perms.add(Manifest.permission.READ_EXTERNAL_STORAGE)
         }
+        return perms.toTypedArray()
     }
 
     private fun defaultExportFileName(extension: String): String {
         val sdf = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US)
         return "bank-tracker-${sdf.format(java.util.Date())}.$extension"
+    }
+
+    /** Saves a file directly into the phone's internal storage (Downloads) without any picker UI. */
+    private fun saveToDownloads(fileName: String, mimeType: String): Uri? {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val values = ContentValues().apply {
+                put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
+                put(MediaStore.MediaColumns.MIME_TYPE, mimeType)
+                put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS)
+            }
+            contentResolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values)
+        } else {
+            val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+            if (!dir.exists() && !dir.mkdirs()) return null
+            Uri.fromFile(java.io.File(dir, fileName))
+        }
+    }
+
+    /** Lists previously saved backup JSON files from the phone's Downloads folder, newest first. */
+    private fun listBackupFiles(): List<BackupFile> {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val results = mutableListOf<BackupFile>()
+            val projection = arrayOf(
+                MediaStore.MediaColumns._ID,
+                MediaStore.MediaColumns.DISPLAY_NAME,
+                MediaStore.MediaColumns.DATE_MODIFIED
+            )
+            contentResolver.query(
+                MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+                projection,
+                "${MediaStore.MediaColumns.DISPLAY_NAME} LIKE ?",
+                arrayOf("bank-tracker-%.json"),
+                "${MediaStore.MediaColumns.DATE_MODIFIED} DESC"
+            )?.use { cursor ->
+                val idCol = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns._ID)
+                val nameCol = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DISPLAY_NAME)
+                val dateCol = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATE_MODIFIED)
+                while (cursor.moveToNext()) {
+                    val uri = ContentUris.withAppendedId(MediaStore.Downloads.EXTERNAL_CONTENT_URI, cursor.getLong(idCol))
+                    results.add(BackupFile(uri, cursor.getString(nameCol), cursor.getLong(dateCol) * 1000))
+                }
+            }
+            results
+        } else {
+            val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+            dir.listFiles { f -> f.name.startsWith("bank-tracker-") && f.name.endsWith(".json") }
+                ?.sortedByDescending { it.lastModified() }
+                ?.map { BackupFile(Uri.fromFile(it), it.name, it.lastModified()) }
+                ?: emptyList()
+        }
     }
 
     private fun isBiometricAvailable(): Boolean {
@@ -409,6 +467,39 @@ fun MainScreen(
             }
         }
     }
+}
+
+@Composable
+fun RestoreBackupDialog(
+    files: List<BackupFile>,
+    onDismiss: () -> Unit,
+    onSelect: (BackupFile) -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("اختر نسخة احتياطية") },
+        text = {
+            if (files.isEmpty()) {
+                Text("لا توجد نسخة احتياطية محفوظة في ذاكرة الهاتف (مجلد التنزيلات).")
+            } else {
+                val sdf = remember { SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US) }
+                LazyColumn {
+                    items(files) { file ->
+                        Text(
+                            text = "${file.name}\n${sdf.format(java.util.Date(file.lastModified))}",
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable { onSelect(file) }
+                                .padding(vertical = 12.dp)
+                        )
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text("إغلاق") }
+        }
+    )
 }
 
 @Composable
