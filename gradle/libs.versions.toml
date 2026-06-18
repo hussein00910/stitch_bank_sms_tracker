@@ -10,7 +10,7 @@ junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.8.2"
-composeBom = "2023.08.00"
+composeBom = "2026.06.00"
 securityCrypto = "1.1.0"
 biometric = "1.1.0"
 
